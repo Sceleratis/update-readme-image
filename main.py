@@ -13,7 +13,7 @@ from github import Github, GithubException
 
 START_COMMENT = '<!--START_SECTION:update_image-->'
 END_COMMENT = '<!--END_SECTION:update_image-->'
-IMAGE_REPL = fr"{START_COMMENT}([^<>]*){END_COMMENT}" # f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
+IMAGE_REPL = f"{START_COMMENT}[\\s\\S]+?{END_COMMENT}" # f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
 
 REPO = os.getenv("INPUT_README_REPOSITORY")
 IMG_REPO = os.getenv("INPUT_IMG_REPOSITORY")
