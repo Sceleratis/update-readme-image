@@ -11,8 +11,8 @@ import requests
 import random
 from github import Github, GithubException
 
-START_COMMENT = '<!--START_SECTION:update_image-->'
-END_COMMENT = '<!--END_SECTION:update_image-->'
+START_COMMENT = '<!--startimg-->'
+END_COMMENT = '<!--endimg-->'
 IMAGE_REPL = f"{START_COMMENT}[\\s\\S]+?{END_COMMENT}" # f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
 
 REPO = os.getenv("INPUT_README_REPOSITORY")
@@ -55,7 +55,7 @@ def decode_readme(data: str) -> str:
 
 def generate_new_readme(readme: str, image_tag: str) -> str:
     '''Generate a new Readme.md'''
-    update_readme_with = f"{START_COMMENT}\n{image_tag}\n{END_COMMENT}"
+    update_readme_with = f"{START_COMMENT}{image_tag}{END_COMMENT}"
     print(f"Adding: {update_readme_with}")
     print(f"Old README: {readme}")
     new_readme = re.sub(IMAGE_REPL, update_readme_with, readme)
